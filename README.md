@@ -39,7 +39,7 @@ Aqui foi os codigos que utilizamos para centralizar a tela, e a cor
 
 Aqui foi para criar o usuario e a senha 
 
-#5. Configuração de Serviços e Acesso Remoto
+# 5. Configuração de Serviços e Acesso Remoto
 O que fizemos: Instalamos as ferramentas (openssh) no Ubuntu para conseguir mexer no servidor de longe e mandar arquivos com segurança.
 Status: O serviço já está ligado e funcionando perfeitamente (active).
 Conexão: Ele está pronto para receber visitas pela porta 22, que é o padrão de segurança.
@@ -48,6 +48,80 @@ Conexão: Ele está pronto para receber visitas pela porta 22, que é o padrão 
 <img width="1219" height="724" alt="image" src="https://github.com/user-attachments/assets/85bfa900-8ff0-47a4-97e1-7ad0fcd99d56" />
 <img width="1218" height="738" alt="image" src="https://github.com/user-attachments/assets/ac36072a-436d-4348-91fe-f178b9eeb465" />
 <img width="1221" height="723" alt="image" src="https://github.com/user-attachments/assets/90886247-0247-4dc6-9ff5-add07a332426" />
+
+# 7 . Execução do Servidor Web (Flask)
+- Acesso ao Link: O link gerado foi http://127.0.0.1:8000. Se tentar usar "https" (com S) agora, vai dar erro porque ainda não configuramos certificados de segurança. O acesso padrão é via HTTP.
+
+- Ajuste no Ambiente (venv): O Flask foi instalado direto no sistema (via sudo apt), mas o projeto já tem uma pasta venv. O ideal é ativar esse ambiente e instalar as coisas lá dentro para o projeto ficar organizado e não depender de permissões de administrador (sudo) toda hora.
+
+- Visibilidade na Rede: Como configuramos o IP 0.0.0.0, qualquer computador na mesma rede consegue acessar a tela de login. Para isso, basta trocar o "127.0.0.1" pelo IP real da máquina onde o código está rodando.
+
+<img width="497" height="480" alt="Captura de tela 2026-05-15 112659" src="https://github.com/user-attachments/assets/0453dbc1-325b-4b5d-a2c0-f02a5c48be49" />
+
+<img width="1054" height="565" alt="Captura de tela 2026-05-15 112848" src="https://github.com/user-attachments/assets/0ddb75ee-1153-4e43-86d2-542862a1eefb" />
+
+<img width="938" height="519" alt="image" src="https://github.com/user-attachments/assets/60ad7211-f76f-4441-b8b5-8eddb3c16759" />
+ com essas informações roda nosso site tanto no windons, tanto no umbundo
+
+# 8. Conectar no do colega
+Nesta fase, testamos a aplicação para ver se ela aguentava acessos de outros dispositivos, simulando como o sistema se comporta em um ambiente real.
+
+. Conectividade e Acesso Externo
+Identificamos o IP da máquina (10.10.147.164) e validamos que o redirecionamento de portas do VirtualBox está funcionando. Com isso, qualquer pessoa na mesma rede conseguiu acessar o sistema pelo link http://10.10.147.164:8000.
+
+. Interface e Visual
+O navegador carregou tudo certinho: o fundo temático e o formulário rosa apareceram sem erros. Isso prova que o Flask está conseguindo entregar os arquivos de estilo (CSS) e as imagens para quem acessa de fora.
+
+. Teste de Login (Backend)
+Testamos a lógica de entrada de dados para garantir que o sistema está seguro:
+
+Ação: Digitamos o usuário Giovanna e a senha cadastrada.
+
+Resultado: O formulário enviou os dados para o servidor (via rota /login), que validou as credenciais e respondeu com a mensagem de sucesso.
+
+Conclusão: O sistema está estável, acessível na rede local e com a lógica de login funcionando perfeitamente.
+
+<img width="1202" height="581" alt="image" src="https://github.com/user-attachments/assets/7861828b-3a76-4372-83e5-d079025912b5" />
+
+
+<img width="1240" height="504" alt="image" src="https://github.com/user-attachments/assets/2cd6a0c5-9ccf-4715-b301-9853e41d6b76" />
+
+<img width="1237" height="788" alt="image" src="https://github.com/user-attachments/assets/a475549e-91cc-4dad-bdb0-5dadb55a19bd" />
+
+<img width="1240" height="760" alt="image" src="https://github.com/user-attachments/assets/b42c80a8-0436-49f2-8faf-f3c8aa2a8f53" />
+
+<img width="1238" height="722" alt="image" src="https://github.com/user-attachments/assets/d848c694-9140-4670-8fae-22c6b625da8f" />
+
+<img width="1240" height="682" alt="image" src="https://github.com/user-attachments/assets/d15c510d-7c61-44ab-a768-85661a098292" />
+
+
+
+
+# 6. Configuração de Serviços e Acesso Remoto
+Para permitir a gestão do servidor e a transferência de arquivos via rede, foram configurados protocolos de comunicação segura e regras de redirecionamento no host.
+
+- A Implementação do Servidor SSH/SFTP
+
+- O serviço de acesso remoto foi instalado e validado diretamente no terminal da máquina virtual Ubuntu:
+
+ - Instalação: Foram instalados os pacotes openssh-server e openssh-sftp-server para permitir conexões seguras e transferência de arquivos.
+
+- Status do Serviço: O serviço ssh.service foi devidamente ativado e encontra-se no estado active (running).
+
+- Porta de Escuta: O servidor está configurado para ouvir conexões na porta padrão 22.
+(não tinha foto desse processo)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
